@@ -1,5 +1,6 @@
 import { RecipeArray } from "../redux/store";
 import { useNavigate } from "react-router-dom";
+import "./Card.css"
 
 type RecipeProps = {
     recipe: RecipeArray;
@@ -10,21 +11,21 @@ type RecipeProps = {
 const Card = function({recipe, handleFavorite, isFavorite}: RecipeProps) {
 
     const navigate = useNavigate();
+
     //redirect user to recipe details
-    const naviHandle = function(recipe: RecipeArray): void {
+    const naviHandle = function(): void {
         navigate(`/recipe/${recipe.id}`)
     };
 
-    //designate as favorite
-    const onFavorite = function() : void {
-        handleFavorite(recipe)
-    };
-
     return (
-        <div>
+        <div className="card" onClick={naviHandle}>
             <img src={recipe.thumbnail_url} alt={recipe.name} />
-            <p onClick={() => naviHandle} >{recipe.name}</p>
-            <p onClick={onFavorite}>{isFavorite ? "❤️" : "🤍"}</p>
+            <div className="recipe-meta">
+                <div className="recipe-text">
+                    <p>{recipe.name}</p>
+                    <p>{recipe.credits[0].name}</p>
+                </div>
+            </div>
         </div>
     );
 };

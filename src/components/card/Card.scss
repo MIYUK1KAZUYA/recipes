@@ -1,0 +1,37 @@
+.card {
+    position: relative;
+    transition: all 0.25s ease-in-out;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+    }
+
+    .recipe-meta {
+        position: absolute;
+        bottom: 20%;
+        background-color: rgba(255, 255, 255, 0.8);
+        
+        .recipe-text {
+            padding: 15px 10px;
+
+            p:first-child {
+                font-family: Roboto, sans-serif;
+                font-size: 18px;
+                padding: 5px 0;
+            }
+
+            p:last-child {
+                font-family: Roboto, sans-serif;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.card:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+

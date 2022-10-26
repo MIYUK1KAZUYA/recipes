@@ -1,0 +1,32 @@
+.card {
+  position: relative;
+  transition: all 0.25s ease-in-out;
+}
+.card img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 4/3;
+}
+.card .recipe-meta {
+  position: absolute;
+  bottom: 20%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.card .recipe-meta .recipe-text {
+  padding: 15px 10px;
+}
+.card .recipe-meta .recipe-text p:first-child {
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  padding: 5px 0;
+}
+.card .recipe-meta .recipe-text p:last-child {
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.card:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}/*# sourceMappingURL=Card.css.map */

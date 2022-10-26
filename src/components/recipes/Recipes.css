@@ -1,0 +1,7 @@
+.card-container {
+  margin: 10vh auto;
+  display: grid;
+  width: 60vw;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4em;
+}/*# sourceMappingURL=Recipes.css.map */

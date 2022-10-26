@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { RecipeArray, State } from "../redux/store";
 import { addFavorite, removeFavorite } from '../redux/favoritesSlice';
 import Card from "../card/Card";
+import Spinner from "../spinner/Spinner";
+import "./Recipes.css";
 
 const Recipes = function() {
     const recipes = useSelector((state: State) => state.recipes);
@@ -27,13 +29,14 @@ const Recipes = function() {
     };
 
     return (
-        <div>
-            {isLoading && <p>Spinner</p>}
+        <div className="card-container">
+            {isLoading && <Spinner />}
             {!isLoading && recipes.map((recipe) => 
                 <Card 
                     recipe={recipe} 
                     handleFavorite={handleFavorite}
                     isFavorite={favorites.includes(recipe)}
+                    key={recipe.id}
                 />
             )}
         </div>   

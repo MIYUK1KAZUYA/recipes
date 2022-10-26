@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { State, RecipeArray } from "../redux/store";
-import { removeFavorite } from "../redux/favoritesSlice";
+import { State, RecipeArray } from "../../redux/store";
+import { removeFavorite } from "../../redux/favoritesSlice";
 
 const Favorites = function() {
     const dispatch = useDispatch();

@@ -1,0 +1,28 @@
+.navigation {
+  position: fixed;
+  display: inline-grid;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 2.7rem;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.navigation div {
+  display: flex;
+  margin: auto;
+  width: 40%;
+  justify-content: space-around;
+  text-transform: uppercase;
+}
+.navigation div .link {
+  transition: all 0.25s ease-in-out;
+  font-size: 11px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #000;
+}
+.navigation div .link:hover {
+  color: rgb(240, 153, 182);
+}/*# sourceMappingURL=Navbar.css.map */

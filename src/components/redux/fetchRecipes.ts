@@ -15,7 +15,7 @@ export const fetchRecipes = (tag: string) => {
     return async (dispatch: AppDispatch) => {
         dispatch(toggleLoading(true));
         try {
-            const response = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${tag}`, options);
+            const response = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=15&q=${tag}`, options);
             if (response.status !== 200) {
                 throw new Error('Error fetching recipes!')
             };
