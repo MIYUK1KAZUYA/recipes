@@ -1,0 +1,61 @@
+.favorites {
+  margin-top: 4rem;
+  position: relative;
+  text-align: center;
+}
+.favorites h1 {
+  font-family: Roboto, sans-serif;
+  border-top: 2px solid rgba(240, 153, 182, 0.6);
+  padding-top: 20px;
+}
+.favorites .favorites-container {
+  display: flex;
+  width: 500px;
+  margin: 20px auto;
+  padding: 5px;
+  flex-direction: column;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: rgb(240, 153, 182);
+}
+.favorites .favorites-container .favorite-recipe {
+  position: relative;
+  display: flex;
+  margin: 10px 0;
+  height: 4rem;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.favorites .favorites-container .favorite-recipe img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100px;
+}
+.favorites .favorites-container .favorite-recipe p {
+  margin-left: 10px;
+  margin-right: 80px;
+  font-family: Roboto, sans-serif;
+}
+.favorites .favorites-container .favorite-recipe p:hover {
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.favorites .favorites-container .favorite-recipe button {
+  position: absolute;
+  right: 0;
+  width: 70px;
+  height: 2.5rem;
+  font-family: Roboto, sans-serif;
+  background-color: rgb(240, 153, 182);
+  border-radius: 0.5rem;
+  border: 1px solid #fff;
+}
+.favorites .favorites-container .favorite-recipe button:hover {
+  background-color: rgba(240, 153, 182, 0.6);
+  cursor: pointer;
+}/*# sourceMappingURL=Favorites.css.map */

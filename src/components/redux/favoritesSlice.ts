@@ -6,8 +6,8 @@ type Action = {
     payload: RecipeArray
 };
 
-const initialState: RecipeArray[] = localStorage.getItem("favorites") !== null
-    ? JSON.parse(localStorage.getItem("favorites") || "")
+const initialState: RecipeArray[] = localStorage.getItem("favoriteRecipes") !== null
+    ? JSON.parse(localStorage.getItem("favoriteRecipes") || "")
     : [];
 
 export const favoritesSlice = createSlice({

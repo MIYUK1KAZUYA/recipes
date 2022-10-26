@@ -1,0 +1,67 @@
+.favorites {
+    margin-top: 4rem;
+    position: relative;
+    text-align: center;
+
+    h1 {
+        font-family: Roboto, sans-serif;
+        border-top: 2px solid rgba(240, 153, 182, 0.6);
+        padding-top: 20px;
+    }
+
+    .favorites-container {
+        display: flex;
+        width: 500px;
+        margin: 20px auto;
+        padding: 5px;
+        flex-direction: column;
+        height: fit-content;
+        border-radius: 10px;
+        background-color: rgba(240, 153, 182, 1);
+
+        .favorite-recipe {
+            position: relative;
+            display: flex;
+            margin: 10px 0;
+            height: 4rem;
+            flex-direction: row;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            overflow: hidden;
+
+            img {
+                object-fit: cover;
+                width: 100px;
+            }
+            
+
+            p {
+                margin-left: 10px;
+                margin-right: 80px;
+                font-family: Roboto, sans-serif;
+            }
+
+            p:hover {
+                color: rgba(0, 0, 0, 0.6);
+                cursor: pointer;
+            }
+
+            button {
+                position: absolute;
+                right: 0;
+                width: 70px;
+                height: 2.5rem;
+                font-family: Roboto, sans-serif;
+                background-color: rgba(240, 153, 182, 1);
+                border-radius: 0.5rem;
+                border: 1px solid #fff;
+            }
+
+            button:hover {
+                background-color: rgba(240, 153, 182, 0.6);
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -45,14 +45,14 @@ const Detail = function() {
         if (favorites.some((fav) => fav.id === data.id)) {
             const newFavorites = favorites.filter(fav => fav.id !== data.id);
             if (newFavorites.length === 0) {
-                localStorage.removeItem("favorites");
+                localStorage.removeItem("favoriteRecipes");
             } else {
-                localStorage.setItem("favorites", JSON.stringify(newFavorites));
+                localStorage.setItem("favoriteRecipes", JSON.stringify(newFavorites));
             };
             dispatch(removeFavorite(data));
         } else {
             const newFavorites = [...favorites, data];
-            localStorage.setItem("favorites", JSON.stringify(newFavorites));
+            localStorage.setItem("favoriteRecipes", JSON.stringify(newFavorites));
             dispatch(addFavorite(data));
         };
     };
