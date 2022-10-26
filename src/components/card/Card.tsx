@@ -4,11 +4,10 @@ import "./Card.css"
 
 type RecipeProps = {
     recipe: RecipeArray;
-    handleFavorite: (recipe: RecipeArray) => void;
     isFavorite: boolean;
 };
 
-const Card = function({recipe, handleFavorite, isFavorite}: RecipeProps) {
+const Card = function({ recipe }: RecipeProps) {
 
     const navigate = useNavigate();
 

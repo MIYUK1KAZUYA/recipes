@@ -7,48 +7,7 @@ type Action = {
 };
 
 const initialState: RecipeArray[] = [
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    },
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    },
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    },
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    },
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    },
-    {
-        id: 3279, 
-        name: "Time To Spice It Up!", 
-        description: "Bland is boring! A little spice can elevate any meal. If you agree with that statement, then get your palate ready to reach new heights! Why don't you check out these recipes to spice up your day?",
-        credits: [{name: "Jervaz Fernandes"}],
-        thumbnail_url: "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/393239.jpg"
-    }
+    
 ];
 
 export const recipesSlice = createSlice({
@@ -56,7 +15,15 @@ export const recipesSlice = createSlice({
     initialState,
     reducers: {
         addRecipes: (state, action: Action) => {
-            return action.payload;
+            const newRecipes: RecipeArray[] = [];
+            action.payload.forEach((recipe) => {
+                if (recipe.recipes) {
+                    newRecipes.push(recipe.recipes[0])
+                } else {
+                    newRecipes.push(recipe)
+                }
+            });
+            return newRecipes;
         }
     }
 });

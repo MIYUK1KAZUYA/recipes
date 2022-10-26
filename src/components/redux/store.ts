@@ -20,9 +20,10 @@ export type RecipeArray = {
     thumbnail_url: string;
     num_servings?: number;
     description: string;
-    instructions?: [];
+    instructions: [];
     total_time_minutes?: number;
     credits: {name: string}[];
+    recipes?: RecipeArray[];
 };
 
 const store = configureStore({

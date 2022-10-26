@@ -1,16 +1,23 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useAppDispatch } from "../../redux/hooks";
 import { State, RecipeArray } from '../../redux/store';
+import { addFavorite, removeFavorite } from "../../redux/favoritesSlice";
+import Signature from "../../signature/Signature";
 import './Detail.css';
 
 const Detail = function() {
     //look into store for recipes
-    const { recipes }: State = useSelector((state: State) => state);
+    const recipes = useSelector((state: State) => state.recipes);
+    //set recipe data into local state
     const [data, setData] = useState<RecipeArray | null>();
+    const favorites: RecipeArray[] = useSelector((state: State) => state.favorites);
+    //get id of recipe from current URL
     const { id } = useParams();
+    const dispatch = useAppDispatch();
 
-    //define fetch function
+    //define fetch function if there is no data in store
     const fetchData = useCallback(
         async function() {
             const url = `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`;
@@ -33,6 +40,22 @@ const Detail = function() {
             };
         }, [id]
     )
+    const handleFavorite = function() : void {
+        if (!data) return;
+        if (favorites.some((fav) => fav.id === data.id)) {
+            const newFavorites = favorites.filter(fav => fav.id !== data.id);
+            if (newFavorites.length === 0) {
+                localStorage.removeItem("favorites");
+            } else {
+                localStorage.setItem("favorites", JSON.stringify(newFavorites));
+            };
+            dispatch(removeFavorite(data));
+        } else {
+            const newFavorites = [...favorites, data];
+            localStorage.setItem("favorites", JSON.stringify(newFavorites));
+            dispatch(addFavorite(data));
+        };
+    };
 
     useEffect(() => {
         if (recipes.some(recipe => recipe.id === Number(id))) {
@@ -46,15 +69,19 @@ const Detail = function() {
     if (!data) return null;
 
     return (
-        <div className='detail-container'>
-            <div className='frontside'>
-                <p>{data.name}</p>
-                <p>by</p>
-                <p>{data.credits[0].name}</p>
+        <div className='detail'>
+            <Signature />
+            <div className='detail-container'>
+                <h1>{data.name}</h1>
+                {favorites.find((x: RecipeArray) => x.id === data.id) 
+                        ? <button className='pink' onClick={handleFavorite}>Unfavorite!</button>
+                        : <button className='white' onClick={handleFavorite}>Favorite!</button>
+                }
+                <img src={data.thumbnail_url} alt={data.name} />
+                <div className='instructions'>
+                    {data.instructions.map((step: {display_text: string}, index) => <p>{index + 1}: {step.display_text}</p>)}
+                </div>
             </div>
-            <img src={data.thumbnail_url} alt={data.name} />
-            <p>{data.description}</p>
-            <p>{data.total_time_minutes}</p>
         </div>
     );
 };

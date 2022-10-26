@@ -1,3 +1,47 @@
-.detail-container {
+.detail {
   margin-top: 4rem;
+  position: relative;
+}
+.detail .detail-container {
+  position: relative;
+  margin: 2em auto;
+  max-width: 60vw;
+  text-align: center;
+  border-top: 2px solid rgba(240, 153, 182, 0.6);
+}
+.detail .detail-container h1 {
+  display: inline-block;
+  margin: 1rem auto;
+  font-size: 24px;
+  font-family: Roboto, sans-serif;
+}
+.detail .detail-container button {
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
+  width: 5rem;
+  height: 3rem;
+  border: 1px solid #000;
+  border-radius: 0.7em;
+  font-family: Roboto, sans-serif;
+}
+.detail .detail-container .white {
+  background-color: #fff;
+  cursor: pointer;
+}
+.detail .detail-container .pink {
+  background-color: rgb(240, 153, 182);
+  cursor: pointer;
+}
+.detail .detail-container img {
+  display: block;
+  margin: 1rem auto 2rem auto;
+  max-width: 30vw;
+}
+.detail .detail-container .instructions {
+  text-align: justify;
+  font-family: Roboto, sans-serif;
+}
+.detail .detail-container .instructions p {
+  margin: 5px 0;
 }/*# sourceMappingURL=Detail.css.map */

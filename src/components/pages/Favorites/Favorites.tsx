@@ -5,7 +5,7 @@ import { removeFavorite } from "../../redux/favoritesSlice";
 const Favorites = function() {
     const dispatch = useDispatch();
     //store initiates with favorites from localStorage
-    const { favorites }: State = useSelector((state: State) => state);
+    const favorites: RecipeArray[] = useSelector((state: State) => state.favorites);
 
     //if user clicks on recipe to remove as favorite
     const removeFavoriteRecipe = function(recipe: RecipeArray): void {

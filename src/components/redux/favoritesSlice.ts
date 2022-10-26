@@ -6,18 +6,18 @@ type Action = {
     payload: RecipeArray
 };
 
-type State = RecipeArray[];
-
-const initialState: RecipeArray[] = [];
+const initialState: RecipeArray[] = localStorage.getItem("favorites") !== null
+    ? JSON.parse(localStorage.getItem("favorites") || "")
+    : [];
 
 export const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
     reducers: {
-        addFavorite: (state: State, action: Action) => {
+        addFavorite: (state: RecipeArray[], action: Action) => {
             state.push(action.payload);
         },
-        removeFavorite: (state: State, action: Action) => {
+        removeFavorite: (state: RecipeArray[], action: Action) => {
             const newFavorites = state.filter((recipe) => recipe.id !== action.payload.id);   
             return newFavorites;
         }
