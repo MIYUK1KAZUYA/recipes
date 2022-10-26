@@ -12,11 +12,11 @@ const Recipes = function() {
     return (
         <div className="card-container">
             {isLoading && <Spinner />}
-            {!isLoading && recipes.map((recipe) => 
+            {!isLoading && recipes.map((recipe, index) => 
                 <Card 
                     recipe={recipe} 
                     isFavorite={favorites.includes(recipe)}
-                    key={recipe.id}
+                    key={index}
                 />
             )}
         </div>   

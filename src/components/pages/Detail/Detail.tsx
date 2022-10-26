@@ -77,9 +77,9 @@ const Detail = function() {
                         ? <button className='pink' onClick={handleFavorite}>Unfavorite!</button>
                         : <button className='white' onClick={handleFavorite}>Favorite!</button>
                 }
-                <img src={data.thumbnail_url} alt={data.name} />
+                <img src={data.thumbnail_url} alt={data.name}/>
                 <div className='instructions'>
-                    {data.instructions.map((step: {display_text: string}, index) => <p>{index + 1}: {step.display_text}</p>)}
+                    {data.instructions.map((step: {display_text: string}, index) => <p key={index}>{index + 1}: {step.display_text}</p>)}
                 </div>
             </div>
         </div>
