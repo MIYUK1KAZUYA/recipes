@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { State } from '../redux/reducers';
-import { RecipeArray } from '../redux/actions';
+import { State, RecipeArray } from '../redux/store';
 
 const Detail = function() {
     //look into store for recipes
-    const { recipeList }: State = useSelector((state: State) => state);
+    const { recipes }: State = useSelector((state: State) => state);
     const [data, setData] = useState<RecipeArray | null>();
     const { id } = useParams();
 
@@ -21,7 +20,7 @@ const Detail = function() {
             }
         };
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, options);
             if (response.status !== 200) {
                 throw new Error('Error fetching recipe')
             };
@@ -33,20 +32,20 @@ const Detail = function() {
     };
 
     useEffect(() => {
-        if (recipeList.some(recipe => recipe.id === Number(id))) {
-            const listedCountry: RecipeArray = recipeList.filter(recipe => recipe.id === Number(id))[0];
+        if (recipes.some(recipe => recipe.id === Number(id))) {
+            const listedCountry: RecipeArray = recipes.filter(recipe => recipe.id === Number(id))[0];
             setData(listedCountry);
         } else {
             fetchData();
         }
     }, []);
     //fix this
-    if (!data) return;
+    if (!data) return null;
 
     return (
         <div>
             <p>{data.name}</p>
-            <img src={data.thumbnail_url} />
+            <img src={data.thumbnail_url} alt={data.name} />
             <p>{data.description}</p>
             <p>{data.credits[0].name}</p>
             <p>{data.total_time_minutes}</p>

@@ -1,16 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { State } from "../redux/reducers";
-import { RecipeArray, addFavorite, removeFavorite } from "../redux/actions";
+import { useAppDispatch } from "../redux/hooks";
+import { useSelector } from "react-redux";
+import { RecipeArray, State } from "../redux/store";
+import { addFavorite, removeFavorite } from '../redux/favoritesSlice';
 import Card from "../card/Card";
 
 const Recipes = function() {
-    const { recipeList, favoriteRecipes } : State = useSelector((state: State) => state);
-    const [recipes, setRecipes] = useState(recipeList);
-    const [favorites, setFavorites] = useState(favoriteRecipes);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const recipes = useSelector((state: State) => state.recipes);
+    const favorites = useSelector((state: State) => state.favorites);
+    const isLoading = useSelector((state: State) => state.isLoading);
+    const dispatch = useAppDispatch();
 
     const handleFavorite = function(recipe: RecipeArray) : void {
         if (favorites.includes(recipe)) {
@@ -21,19 +19,22 @@ const Recipes = function() {
                 localStorage.setItem("favorites", JSON.stringify(newFavorites));
             };
             dispatch(addFavorite(recipe));
-            setFavorites(newFavorites);
         } else {
             const newFavorites = [...favorites, recipe];
             localStorage.setItem("favorites", JSON.stringify(newFavorites));
             dispatch(removeFavorite(recipe));
-            setFavorites(newFavorites);
         };
     };
 
     return (
         <div>
-            {recipes.map((recipe) => 
-                <Card recipe={recipe} handleFavorite={handleFavorite} />
+            {isLoading && <p>Spinner</p>}
+            {!isLoading && recipes.map((recipe) => 
+                <Card 
+                    recipe={recipe} 
+                    handleFavorite={handleFavorite}
+                    isFavorite={favorites.includes(recipe)}
+                />
             )}
         </div>   
     );

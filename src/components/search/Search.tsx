@@ -1,22 +1,23 @@
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { fetchRecipes, searchInput } from '../redux/actions';
+import { useAppDispatch } from "../redux/hooks";
+import { addSearchInput } from "../redux/searchInputSlice";
+import { fetchRecipes } from "../redux/fetchRecipes";
 
 const Search = function() {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     //get hold of input value
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     //fetch new recipes on form submit
     const handleSubmit = function() : void {
         const searchValue = inputRef.current!.value;
-        dispatch(searchInput(searchValue));
-        fetchRecipes(searchValue);
-    };
+        dispatch(addSearchInput(searchValue));
+        dispatch(fetchRecipes(searchValue));
+    };  
 
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
             <label htmlFor="search-value">Search for your favorite recipes:</label>
             <input 
                 type="text" 
@@ -24,13 +25,8 @@ const Search = function() {
                 id="search-value" 
                 name="search-value"
             />
-            <input 
-                type="button" 
-                id="button" 
-                name="button" 
-                value="Search" 
-            />
-        </form>
+            <button onClick={handleSubmit}>Search</button>
+        </div>
     );
 };
 
