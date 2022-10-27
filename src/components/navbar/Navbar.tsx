@@ -11,7 +11,7 @@ const Navbar = function() {
                 <p>Author's favorites</p>
                     <div className="dropdown-content">
                         <Link to="/recipe/4162" className="link">Macarons</Link>
-                        <Link to="/recipe/1500" className="link">Burgers</Link>
+                        <Link to="/recipe/1500" className="link">Burger</Link>
                     </div>
                 </div>
             </div>
