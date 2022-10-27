@@ -7,7 +7,13 @@ const Navbar = function() {
             <div>
                 <Link to="/" className="link">Home</Link>
                 <Link to="/favorites" className="link">Favorites</Link>
-                <Link to="/detail" className="link">Author's favorites</Link>
+                <div className="dropdown">
+                <p>Author's favorites</p>
+                    <div className="dropdown-content">
+                        <Link to="/recipe/4162" className="link">Macarons</Link>
+                        <Link to="/recipe/1500" className="link">Burgers</Link>
+                    </div>
+                </div>
             </div>
         </nav>
     );

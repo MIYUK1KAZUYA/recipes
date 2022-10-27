@@ -6,9 +6,7 @@ type Action = {
     payload: RecipeArray[]
 };
 
-const initialState: RecipeArray[] = [
-    
-];
+const initialState: RecipeArray[] = [];
 
 export const recipesSlice = createSlice({
     name: 'recipes',

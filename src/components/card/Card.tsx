@@ -22,7 +22,6 @@ const Card = function({ recipe }: RecipeProps) {
             <div className="recipe-meta">
                 <div className="recipe-text">
                     <p>{recipe.name}</p>
-                    <p>{recipe.credits[0].name}</p>
                 </div>
             </div>
         </div>

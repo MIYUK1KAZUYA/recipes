@@ -16,7 +16,7 @@
         justify-content: space-around;
         text-transform: uppercase;
         
-        .link {
+        .link, p {
             transition: all 0.25s ease-in-out;
             font-size: 11px;
             font-family: 'Roboto', sans-serif;
@@ -28,6 +28,38 @@
 
         .link:hover {
             color: rgb(240, 153, 182);
+        }
+
+        .dropdown {
+            margin: 0;
+            display: inline-block;
+            position: relative;
+            width: 150px;
+            transition: all 0.5s ease;
+            
+            .dropdown-content {
+                width: 150px;
+                display: none;
+                position: absolute;
+
+                .link {
+                    display: block;
+                    margin: 25px 0;
+                }
+            }
+        }
+
+        .dropdown:hover {
+            cursor: pointer;
+
+            p {
+                color: rgb(240, 153, 182);
+            }
+        
+            .dropdown-content {
+                display: block;
+                background-color: #fff;
+            }
         }
     }
 }

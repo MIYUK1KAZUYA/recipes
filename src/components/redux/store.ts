@@ -20,9 +20,8 @@ export type RecipeArray = {
     thumbnail_url: string;
     num_servings?: number;
     description: string;
-    instructions: [];
+    instructions: {display_text: string}[];
     total_time_minutes?: number;
-    credits: {name: string}[];
     recipes?: RecipeArray[];
 };
 
